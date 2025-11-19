@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript com Animação e Som</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #mensagem {
+      font-size: 1.2em;
+      margin: 20px;
+      color: #fff;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    .animado {
+      animation: bounce 0.6s ease;
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.2); }
+      50% { transform: scale(0.9); }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Teste de JavaScript com Efeitos</h1>
+  <p id="mensagem">Clique no botão para ver o efeito!</p>
+  <button onclick="mostrarMensagem()">Clique aqui 🎵</button>
+
+  <audio id="somClique">
+    <source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function mostrarMensagem() {
+      const mensagem = document.getElementById("mensagem");
+      const botao = document.querySelector("button");
+      const som = document.getElementById("somClique");
+
+      // Troca o texto
+      mensagem.innerHTML = "🎉 Você clicou! JavaScript com animação e som funcionando!";
+
+      // Toca o som
+      som.play();
+
+      // Anima o botão
+      botao.classList.add("animado");
+      setTimeout(() => botao.classList.remove("animado"), 600);
+    }
+  </script>
+
+</body>
+</html>
+
